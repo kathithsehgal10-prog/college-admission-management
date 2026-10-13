@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-10-12T13:19:55.425Z",
+  "api": "http://127.0.0.1:5001/api",
+  "database": "college_submission",
+  "mysqlPort": 3307,
+  "checks": [
+    {
+      "name": "Real MySQL health",
+      "passed": true
+    },
+    {
+      "name": "Unauthenticated API blocked",
+      "passed": true
+    },
+    {
+      "name": "Incorrect password blocked",
+      "passed": true
+    },
+    {
+      "name": "Administrator login",
+      "passed": true
+    },
+    {
+      "name": "All UI data endpoints",
+      "passed": true
+    },
+    {
+      "name": "Student creation persists in MySQL",
+      "passed": true
+    },
+    {
+      "name": "Approval, enrollment and status history",
+      "passed": true
+    },
+    {
+      "name": "Course capacity enforced",
+      "passed": true
+    },
+    {
+      "name": "Second approved admission blocked",
+      "passed": true
+    },
+    {
+      "name": "Revocation synchronizes enrollment",
+      "passed": true
+    },
+    {
+      "name": "hostel capacity and reactivation",
+      "passed": true
+    },
+    {
+      "name": "bus capacity and reactivation",
+      "passed": true
+    },
+    {
+      "name": "Payment ledger record",
+      "passed": true
+    },
+    {
+      "name": "CSV export",
+      "passed": true
+    },
+    {
+      "name": "All SQL viva queries through API",
+      "passed": true
+    },
+    {
+      "name": "SQL modification blocked",
+      "passed": true
+    }
+  ],
+  "testRecordsCleaned": true,
+  "auditEventsRetained": true
+}

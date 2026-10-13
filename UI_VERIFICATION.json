@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-12T13:17:26.875Z",
+  "browser": "Chrome",
+  "app": "http://localhost:5173",
+  "loginVerified": true,
+  "databaseDiagnosticsVerified": true,
+  "studentRegistrationPersisted": true,
+  "testStudent": {
+    "student_id": 13,
+    "name": "UI Verification Student",
+    "email": "ui-verification-final@example.com",
+    "marks": "85.00"
+  },
+  "testRecordRemoved": true
+}

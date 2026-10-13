@@ -1,0 +1,219 @@
+{
+  "checkedAt": "2026-10-12T13:19:55.100Z",
+  "version": "26.7.0",
+  "database_name": "college_submission",
+  "tables": [
+    "admins",
+    "admission_cycles",
+    "announcements",
+    "application_status_history",
+    "applications",
+    "audit_logs",
+    "bus_allocations",
+    "buses",
+    "courses",
+    "departments",
+    "hostel_allocations",
+    "hostels",
+    "payments",
+    "students",
+    "tutors",
+    "users"
+  ],
+  "metadata": {
+    "databaseEngine": "MySQL (InnoDB)",
+    "tables": [
+      {
+        "name": "users",
+        "primaryKey": "user_id",
+        "rowCountQuery": "SELECT COUNT(*) AS c FROM users",
+        "rowCount": 0
+      },
+      {
+        "name": "admission_cycles",
+        "primaryKey": "cycle_id",
+        "rowCountQuery": "SELECT COUNT(*) AS c FROM admission_cycles",
+        "rowCount": 3
+      },
+      {
+        "name": "application_status_history",
+        "primaryKey": "history_id",
+        "rowCountQuery": "SELECT COUNT(*) AS c FROM application_status_history",
+        "rowCount": 6
+      },
+      {
+        "name": "announcements",
+        "primaryKey": "announcement_id",
+        "rowCountQuery": "SELECT COUNT(*) AS c FROM announcements",
+        "rowCount": 3
+      },
+      {
+        "name": "payments",
+        "primaryKey": "payment_id",
+        "rowCountQuery": "SELECT COUNT(*) AS c FROM payments",
+        "rowCount": 3
+      },
+      {
+        "name": "departments",
+        "description": "Academic faculties (3NF/BCNF)",
+        "primaryKey": "department_id",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM departments",
+        "rowCount": 5
+      },
+      {
+        "name": "courses",
+        "description": "Degree programs with intake capacities",
+        "primaryKey": "course_id",
+        "foreignKey": "department_id -> departments",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM courses",
+        "rowCount": 8
+      },
+      {
+        "name": "tutors",
+        "description": "Faculty mentorship counselors",
+        "primaryKey": "tutor_id",
+        "foreignKey": "department_id -> departments",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM tutors",
+        "rowCount": 7
+      },
+      {
+        "name": "students",
+        "description": "Applicant dossiers with merit scores",
+        "primaryKey": "student_id",
+        "foreignKey": "department_id -> departments (SET NULL)",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM students",
+        "rowCount": 10
+      },
+      {
+        "name": "admins",
+        "description": "Admin authentication (JWT + Bcrypt)",
+        "primaryKey": "admin_id",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM admins",
+        "rowCount": 1
+      },
+      {
+        "name": "hostels",
+        "description": "Residential living facilities",
+        "primaryKey": "hostel_id",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM hostels",
+        "rowCount": 4
+      },
+      {
+        "name": "buses",
+        "description": "Transit vehicle routes and fleets",
+        "primaryKey": "bus_id",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM buses",
+        "rowCount": 5
+      },
+      {
+        "name": "applications",
+        "description": "Many-to-Many bridge (Students <-> Courses)",
+        "primaryKey": "application_id",
+        "foreignKey": "student_id -> students, course_id -> courses",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM applications",
+        "rowCount": 10
+      },
+      {
+        "name": "hostel_allocations",
+        "description": "Bed assignment pass tracking",
+        "primaryKey": "allocation_id",
+        "foreignKey": "student_id -> students, hostel_id -> hostels",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM hostel_allocations",
+        "rowCount": 6
+      },
+      {
+        "name": "bus_allocations",
+        "description": "Transit pass assignment tracking",
+        "primaryKey": "allocation_id",
+        "foreignKey": "student_id -> students, bus_id -> buses",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM bus_allocations",
+        "rowCount": 3
+      },
+      {
+        "name": "audit_logs",
+        "description": "Relational state transition audit history",
+        "primaryKey": "log_id",
+        "rowCountQuery": "SELECT COUNT(*) as c FROM audit_logs",
+        "rowCount": 2
+      }
+    ],
+    "views": [
+      "view_bus_occupancy",
+      "view_department_stats",
+      "view_hostel_occupancy"
+    ],
+    "storedProcedures": [
+      "sp_allocate_hostel",
+      "sp_approve_application",
+      "sp_department_enrollment_report"
+    ],
+    "storedFunctions": [
+      "fn_bus_available_seats",
+      "fn_calculate_merit_score",
+      "fn_hostel_available_beds"
+    ],
+    "triggers": []
+  },
+  "queries": [
+    {
+      "id": "join-4-table",
+      "rows": 6,
+      "passed": true
+    },
+    {
+      "id": "join-left-aggregation",
+      "rows": 5,
+      "passed": true
+    },
+    {
+      "id": "subquery-not-in",
+      "rows": 0,
+      "passed": true
+    },
+    {
+      "id": "subquery-correlated-exists",
+      "rows": 0,
+      "passed": true
+    },
+    {
+      "id": "subquery-capacity",
+      "rows": 4,
+      "passed": true
+    },
+    {
+      "id": "group-by-having",
+      "rows": 3,
+      "passed": true
+    },
+    {
+      "id": "set-union",
+      "rows": 18,
+      "passed": true
+    },
+    {
+      "id": "views-department-stats",
+      "rows": 5,
+      "passed": true
+    },
+    {
+      "id": "views-hostel-occupancy",
+      "rows": 4,
+      "passed": true
+    },
+    {
+      "id": "views-bus-occupancy",
+      "rows": 5,
+      "passed": true
+    },
+    {
+      "id": "function-merit-formula",
+      "rows": 10,
+      "passed": true
+    },
+    {
+      "id": "audit-logs-view",
+      "rows": 2,
+      "passed": true
+    }
+  ]
+}
